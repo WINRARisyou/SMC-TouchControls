@@ -3,6 +3,7 @@
 // @description  Adds touch support for Super Mario Construct
 // @author       WINRARisyou
 // @namespace    https://winarisyou.github.io/SMC-TouchControls
+// @homepage     https://github.com/WINRARisyou/SMC-TouchControls
 // @downloadURL  https://winrarisyou.github.io/SMC-TouchControls/smcmobile.user.js
 // @match        https://levelsharesquare.com/html5/supermarioconstruct/*
 // @version      1.0.1
