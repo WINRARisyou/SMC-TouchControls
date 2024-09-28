@@ -5,7 +5,7 @@
 // @namespace    https://winarisyou.github.io/SMC-TouchControls
 // @downloadURL  https://winrarisyou.github.io/SMC-TouchControls/smcmobile.user.js
 // @match        https://levelsharesquare.com/html5/supermarioconstruct/*
-// @version      1.0.0
+// @version      1.0.1
 // @updateURL    https://winrarisyou.github.io/SMC-TouchControls/smcmobile.user.js
 // @run-at       document-start
 // @grant        none
@@ -15,6 +15,13 @@ window.debugMode = false;
 
 function initTouchControls() {
 	const gamepadConfig = {
+		specialButtons: {
+			position: { bottom: "0px", left: "0px" },
+			size: { width: "100%", height: "100%" },
+			buttons: [
+				{ id: 'pause', label: 'Pause', x: "50%", y: "0px", width: "60px", height: "60px", key: 'p', keyCode: 80 }
+			]
+		},
 		dpad: {
 			position: { bottom: 10, left: 10 },
 			size: { width: 150, height: 150 },
@@ -42,10 +49,17 @@ function initTouchControls() {
 		elem.id = button.id;
 		elem.textContent = button.label;
 		elem.style.position = 'absolute';
-		elem.style.left = `${button.x}px`;
-		elem.style.top = `${button.y}px`;
-		elem.style.width = `${button.width}px`;
-		elem.style.height = `${button.height}px`;
+		if (container.id != "special") {
+			elem.style.left = `${button.x}px`;
+			elem.style.top = `${button.y}px`;
+			elem.style.width = `${button.width}px`;
+			elem.style.height = `${button.height}px`;
+		} else {
+			elem.style.left = `${button.x}`;
+			elem.style.top = `${button.y}`;
+			elem.style.width = `${button.width}`;
+			elem.style.height = `${button.height}`;
+		}
 		elem.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
 		elem.style.border = '1px solid black';
 		elem.style.borderRadius = '5px';
@@ -64,6 +78,19 @@ function initTouchControls() {
 		gamepad.style.width = '100%';
 		gamepad.style.height = '100%';
 		document.body.appendChild(gamepad);
+
+		const special = document.createElement('div')
+		special.id = 'special'
+		special.style.position = 'absolute';
+		special.style.width = `${gamepadConfig.specialButtons.size.width}`;
+		special.style.height = `${gamepadConfig.specialButtons.size.height}`;
+		special.style.bottom = `${gamepadConfig.specialButtons.position.bottom}`;
+		special.style.left = `${gamepadConfig.specialButtons.position.left}`;
+		special.style.pointerEvents = 'auto';
+		if (window.debugMode == true) {
+			special.style.backgroundColor = 'rgba(0, 255, 0, 0.2)';
+		}
+		gamepad.appendChild(special);
 
 		const dpad = document.createElement('div');
 		dpad.id = 'dpad';
@@ -92,6 +119,11 @@ function initTouchControls() {
 		gamepad.appendChild(actionButtons);
 
 		const buttons = {};
+
+		gamepadConfig.specialButtons.buttons.forEach(button => {
+			const elem = createButton(button, special);
+			buttons[button.id] = { ...button, element: elem };
+		});
 
 		gamepadConfig.dpad.buttons.forEach(button => {
 			const elem = createButton(button, dpad);
