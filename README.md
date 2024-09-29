@@ -51,4 +51,4 @@ Finally, paste in the code from Step 1, press file and save, and you're done :D
 <video controls width="25%" src="images/mobile-manual.mp4" title="Title"></video>
 
 ## Mobile Chrome
-Copy the text from [chrome.js](https://winrarisyou.github.io/SMC-TouchControls/chrome.txt) and follow instructions in video
+Copy the text from [chrome.js](https://winrarisyou.github.io/SMC-TouchControls/chrome.js) and follow instructions in video
