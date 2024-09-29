@@ -6,7 +6,7 @@
 // @homepage     https://github.com/WINRARisyou/SMC-TouchControls
 // @downloadURL  https://winrarisyou.github.io/SMC-TouchControls/smcmobile.user.js
 // @match        https://levelsharesquare.com/html5/supermarioconstruct/*
-// @version      1.0.2
+// @version      1.0.3
 // @updateURL    https://winrarisyou.github.io/SMC-TouchControls/smcmobile.user.js
 // @run-at       document-start
 // @grant        none
@@ -40,7 +40,8 @@ function initTouchControls() {
 				{ id: 'jump', label: 'Jump', x: 0, y: 70, width: 60, height: 60, key: 'z', keyCode: 90 },
 				{ id: 'run', label: 'Run', x: 70, y: 70, width: 60, height: 60, key: 'x', keyCode: 88 },
 				{ id: 'spinjump', label: 'Spin', x: 140, y: 70, width: 60, height: 60, key: 'c', keyCode: 67 },
-				{ id: 'usepowerup', label: 'Use Powerup', x: 105, y: 0, width: 60, height: 60, key: ' ', keyCode: 32 }
+				{ id: 'usepowerup', label: 'Use Powerup', x: 105, y: 0, width: 60, height: 60, key: ' ', keyCode: 32 },
+				{ id: 'togglerun', label: 'Toggle Run', x: 35, y: 0, width: 60, height: 60, key: 'x', keyCode: 88, isToggle: true }
 			]
 		}
 	};
@@ -69,6 +70,8 @@ function initTouchControls() {
 		container.appendChild(elem);
 		return elem;
 	}
+
+	let toggledButtons = new Set();
 
 	function createGamepad() {
 		const gamepad = document.createElement('div');
@@ -174,9 +177,11 @@ function initTouchControls() {
 
 	let activeButtons = new Set();
 	let touchMap = new Map();
+	let activeButtonStates = {};
 
 	function simulateKeyEvent(keyInfo, type) {
-		const event = new KeyboardEvent(type, {
+		let event;
+		event = new KeyboardEvent(type, {
 			bubbles: true,
 			cancelable: true,
 			key: keyInfo.key,
@@ -202,18 +207,42 @@ function initTouchControls() {
 	}
 
 	function handleButtonPress(button) {
-		if (!activeButtons.has(button)) {
-			activeButtons.add(button);
-			simulateKeyEvent(buttons[button], 'keydown');
-			buttons[button].element.style.backgroundColor = 'rgba(255, 255, 0, 0.5)';
+		const buttonInfo = buttons[button];
+		const key = buttonInfo.key;
+		if (buttonInfo.isToggle) {
+			if (toggledButtons.has(button)) {
+				toggledButtons.delete(button);
+				activeButtonStates[key] = false;
+				buttonInfo.element.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
+				simulateKeyEvent(buttonInfo, 'keyup');
+			} else {
+				toggledButtons.add(button);
+				activeButtonStates[key] = true;
+				buttonInfo.element.style.backgroundColor = 'rgba(255, 255, 0, 0.5)';
+				simulateKeyEvent(buttonInfo, 'keydown');
+			}
+		} else {
+			// If the button is not a toggle, we should only simulate the keydown if it's not already active
+			if (!activeButtons.has(button) && !activeButtonStates[key]) {
+				activeButtons.add(button);
+				activeButtonStates[key] = true;
+				buttonInfo.element.style.backgroundColor = 'rgba(255, 255, 0, 0.5)';
+				simulateKeyEvent(buttonInfo, 'keydown');
+			}
 		}
 	}
 
 	function handleButtonRelease(button) {
-		if (activeButtons.has(button)) {
-			activeButtons.delete(button);
-			simulateKeyEvent(buttons[button], 'keyup');
-			buttons[button].element.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
+		const buttonInfo = buttons[button];
+		const key = buttonInfo.key;
+
+		if (!buttonInfo.isToggle) {
+			if (activeButtons.has(button)) {
+				activeButtons.delete(button);
+				activeButtonStates[key] = false;
+				simulateKeyEvent(buttonInfo, 'keyup');
+				buttonInfo.element.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
+			}
 		}
 	}
 
