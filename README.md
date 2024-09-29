@@ -51,7 +51,5 @@ Finally, paste in the code from Step 1, press file and save, and you're done :D
 <video controls width="25%" src="images/mobile-manual.mp4" title="Title"></video>
 
 ## Mobile Chrome
-```javascript
 javascript:(function () { var script = document.createElement('script'); script.src="https://winrarisyou.github.io/SMC-TouchControls/smcmobile.user.js"; document.body.append(script); script.onload = function () { resetControls(); } })();
-```
 Copy this and follow instructions in video
