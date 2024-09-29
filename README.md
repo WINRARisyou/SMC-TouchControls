@@ -4,7 +4,7 @@ Adds touch support for Super Mario Construct!
 Download [smcmobile.user.js](https://winrarisyou.github.io/SMC-TouchControls/smcmobile.user.js), add it to your userscript manager of choice, and voila touch controls! Source code [here](https://github.com/WINRARisyou/SMC-TouchControls), changelog [here](https://github.com/WINRARisyou/SMC-TouchControls/tree/main/changelog.md)
 
 # Disclaimer: It's going to lag
-You're playing a PC optimized game on your mobile browser. Unless your phone is a NASA supercomputer in disguise, it's probably not going to run very well. It's not their fault, so don't berate them in the discord saying it runs poorly on your phone. Also, this is an unofficial tool, developed by someone who has 0 relations to the devlopment of Super Mario Construct. If something goes wrong while using this, I probably messed up somewhere.
+You're playing a PC optimized game on your mobile browser. Unless your phone is a NASA supercomputer in disguise, it's probably not going to run very well. It's not their fault, so don't berate them in the discord saying it runs poorly on your phone. If it runs really bad on Firefox, use the Chrome method. It's more tedious, but it runs faster. Also, this is an unofficial tool, developed by someone who has 0 relations to the devlopment of Super Mario Construct. If something goes wrong while using this (crashes, freezes, etc.), I probably messed up somewhere. Finally, this tool is not for creating levels on the go. If I can figure out how to make right click work to erase, then maybe I'll add an editor mode. For the forseeable future, though, it's staying as a way to play levels only.
 
 # Installation
 ## Automatic (PC)
@@ -50,5 +50,8 @@ Finally, paste in the code from Step 1, press file and save, and you're done :D
 ## Manual
 <video controls width="25%" src="images/mobile-manual.mp4" title="Title"></video>
 
-## Mobile Chrome
-Copy the text from [chrome.js](https://winrarisyou.github.io/SMC-TouchControls/chrome.js) and follow instructions in video
+## Mobile (Chrome)
+Copy the text from [chrome.js](https://winrarisyou.github.io/SMC-TouchControls/chrome.js) and follow instructions in video. The name is important, it will be how you access it. Make sure the one you are clicking starts with javascript:
+This method should work iOS but I don't own any apple devices so I can't test it.
+
+<video controls width="25%" src="images/chrome.mp4" title="Title"></video>
