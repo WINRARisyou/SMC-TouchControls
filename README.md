@@ -1,7 +1,7 @@
 # SMC-TouchControls
 Adds touch support for Super Mario Construct!
 
-Download [smcmobile.user.js](https://winrarisyou.github.io/SMC-TouchControls/smcmobile.user.js), add it to your userscript manager of choice, and voila touch controls! Source code [here](https://github.com/WINRARisyou/SMC-TouchControls).
+Download [smcmobile.user.js](https://winrarisyou.github.io/SMC-TouchControls/smcmobile.user.js), add it to your userscript manager of choice, and voila touch controls! Source code [here](https://github.com/WINRARisyou/SMC-TouchControls), changelog [here](https://github.com/WINRARisyou/SMC-TouchControls/tree/main/changelog.md)
 
 # Disclaimer: It's going to lag
 You're playing a PC optimized game on your mobile browser. Unless your phone is a NASA supercomputer in disguise, it's probably not going to run very well. It's not their fault, so don't berate them in the discord saying it runs poorly on your phone. Also, this is an unofficial tool, developed by someone who has 0 relations to the devlopment of Super Mario Construct. If something goes wrong while using this, I probably messed up somewhere.
