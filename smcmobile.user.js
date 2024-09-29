@@ -6,7 +6,7 @@
 // @homepage     https://github.com/WINRARisyou/SMC-TouchControls
 // @downloadURL  https://winrarisyou.github.io/SMC-TouchControls/smcmobile.user.js
 // @match        https://levelsharesquare.com/html5/supermarioconstruct/*
-// @version      1.0.1
+// @version      1.0.2
 // @updateURL    https://winrarisyou.github.io/SMC-TouchControls/smcmobile.user.js
 // @run-at       document-start
 // @grant        none
@@ -17,8 +17,8 @@ window.debugMode = false;
 function initTouchControls() {
 	const gamepadConfig = {
 		specialButtons: {
-			position: { bottom: "0px", left: "0px" },
-			size: { width: "100%", height: "100%" },
+			position: { top: "0px", left: "0px" },
+			size: { width: "100%", height: "30px" },
 			buttons: [
 				{ id: 'pause', label: 'Pause', x: "50%", y: "0px", width: "60px", height: "60px", key: 'p', keyCode: 80 }
 			]
@@ -85,10 +85,10 @@ function initTouchControls() {
 		special.style.position = 'absolute';
 		special.style.width = `${gamepadConfig.specialButtons.size.width}`;
 		special.style.height = `${gamepadConfig.specialButtons.size.height}`;
-		special.style.bottom = `${gamepadConfig.specialButtons.position.bottom}`;
+		special.style.top = `${gamepadConfig.specialButtons.position.top}`;
 		special.style.left = `${gamepadConfig.specialButtons.position.left}`;
 		special.style.pointerEvents = 'auto';
-		if (window.debugMode == true) {
+		if (window.debugMode) {
 			special.style.backgroundColor = 'rgba(0, 255, 0, 0.2)';
 		}
 		gamepad.appendChild(special);
@@ -101,7 +101,7 @@ function initTouchControls() {
 		dpad.style.bottom = `${gamepadConfig.dpad.position.bottom}px`;
 		dpad.style.left = `${gamepadConfig.dpad.position.left}px`;
 		dpad.style.pointerEvents = 'auto';
-		if (window.debugMode == true) {
+		if (window.debugMode) {
 			dpad.style.backgroundColor = 'rgba(0, 0, 255, 0.2)';
 		}
 		gamepad.appendChild(dpad);
@@ -114,7 +114,7 @@ function initTouchControls() {
 		actionButtons.style.bottom = `${gamepadConfig.actionButtons.position.bottom}px`;
 		actionButtons.style.right = `${gamepadConfig.actionButtons.position.right}px`;
 		actionButtons.style.pointerEvents = 'auto';
-		if (window.debugMode == true) {
+		if (window.debugMode) {
 			actionButtons.style.backgroundColor = 'rgba(255, 0, 0, 0.2)';
 		}
 		gamepad.appendChild(actionButtons);
