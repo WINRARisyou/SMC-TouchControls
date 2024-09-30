@@ -6,7 +6,7 @@
 // @homepage     https://github.com/WINRARisyou/SMC-TouchControls
 // @downloadURL  https://winrarisyou.github.io/SMC-TouchControls/smcmobile.user.js
 // @match        https://levelsharesquare.com/html5/supermarioconstruct/*
-// @version      1.0.3
+// @version      1.0.31
 // @updateURL    https://winrarisyou.github.io/SMC-TouchControls/smcmobile.user.js
 // @run-at       document-start
 // @grant        none
@@ -14,13 +14,26 @@
 
 window.debugMode = false;
 
+function isMobile() {
+	try {
+		document.createEvent("TouchEvent");
+		return true;
+		} catch (e) {
+			return false;
+		}
+}
+if(isMobile()) {
+	(function(){document.querySelector("body").requestFullscreen();})();
+}
+
 function initTouchControls() {
 	const gamepadConfig = {
 		specialButtons: {
 			position: { top: "0px", left: "0px" },
 			size: { width: "100%", height: "30px" },
 			buttons: [
-				{ id: 'pause', label: 'Pause', x: "50%", y: "0px", width: "60px", height: "60px", key: 'p', keyCode: 80 }
+				{ id: 'pause', label: 'Pause', x: "50%", y: "0px", width: "60px", height: "60px", key: 'p', keyCode: 80 },
+				{ id: 'fullscreen', label: 'Fullscreen', x: "calc(50% + 70px)", y: "0px", width: "60px", height: "60px", key: '', keyCode: 0 }
 			]
 		},
 		dpad: {
@@ -209,6 +222,10 @@ function initTouchControls() {
 	function handleButtonPress(button) {
 		const buttonInfo = buttons[button];
 		const key = buttonInfo.key;
+		if (button === "fullscreen") {
+			(function(){document.querySelector("body").requestFullscreen();})();
+			return;
+		}
 		if (buttonInfo.isToggle) {
 			if (toggledButtons.has(button)) {
 				toggledButtons.delete(button);
