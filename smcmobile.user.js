@@ -6,7 +6,7 @@
 // @homepage     https://github.com/WINRARisyou/SMC-TouchControls
 // @downloadURL  https://winrarisyou.github.io/SMC-TouchControls/smcmobile.user.js
 // @match        https://levelsharesquare.com/html5/supermarioconstruct/*
-// @version      1.0.31
+// @version      1.0.32
 // @updateURL    https://winrarisyou.github.io/SMC-TouchControls/smcmobile.user.js
 // @run-at       document-start
 // @grant        none
@@ -23,7 +23,7 @@ function isMobile() {
 		}
 }
 if(isMobile()) {
-	(function(){document.querySelector("body").requestFullscreen();})();
+	document.querySelector("body").requestFullscreen();
 }
 
 function initTouchControls() {
@@ -32,12 +32,13 @@ function initTouchControls() {
 			position: { top: "0px", left: "0px" },
 			size: { width: "100%", height: "30px" },
 			buttons: [
-				{ id: 'pause', label: 'Pause', x: "50%", y: "0px", width: "60px", height: "60px", key: 'p', keyCode: 80 },
-				{ id: 'fullscreen', label: 'Fullscreen', x: "calc(50% + 70px)", y: "0px", width: "60px", height: "60px", key: '', keyCode: 0 }
+				{ id: 'pause', label: 'Pause', x: "calc(50% - 65px)", y: "0px", width: "60px", height: "30px", key: 'p', keyCode: 80 },
+				{ id: 'fullscreen', label: 'Fullscreen', x: "calc(50% + 5px)", y: "0px", width: "60px", height: "30px", key: '', keyCode: 0 },
+                { id: 'item', label: 'Item', x: "calc(50% - 30px)", y: "35px", width: "60px", height: "60px", key: 'Shift', keyCode: 16 },
 			]
 		},
 		dpad: {
-			position: { bottom: 10, left: 10 },
+			position: { bottom: 60, left: 10 },
 			size: { width: 150, height: 150 },
 			buttons: [
 				{ id: 'up', label: '↑', x: 50, y: 0, width: 50, height: 50, key: 'ArrowUp', keyCode: 38 },
@@ -47,7 +48,7 @@ function initTouchControls() {
 			]
 		},
 		actionButtons: {
-			position: { bottom: 10, right: 10 },
+			position: { bottom: 60, right: 10 },
 			size: { width: 200, height: 130 },
 			buttons: [
 				{ id: 'jump', label: 'Jump', x: 0, y: 70, width: 60, height: 60, key: 'z', keyCode: 90 },
@@ -223,7 +224,7 @@ function initTouchControls() {
 		const buttonInfo = buttons[button];
 		const key = buttonInfo.key;
 		if (button === "fullscreen") {
-			(function(){document.querySelector("body").requestFullscreen();})();
+			document.querySelector("body").requestFullscreen();
 			return;
 		}
 		if (buttonInfo.isToggle) {
@@ -341,6 +342,17 @@ window.resetControls = function resetControls() {
 	}
 	window.debugMode = false
 	initTouchControls()
+}
+
+window.deleteControls = function deleteControls() {
+    var gamepad = document.getElementById('touch-gamepad')
+	if (gamepad != undefined) {
+		gamepad.remove()
+	}
+	var debug = document.getElementById('debug-info')
+	if (debug != undefined) {
+		debug.remove()
+	}
 }
 
 initTouchControls();
