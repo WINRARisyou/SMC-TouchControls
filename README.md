@@ -52,6 +52,6 @@ I added the wrong video (oops). The steps are essentially the same as the PC man
 
 ## Mobile (Chrome)
 Copy the text from [chrome.js](https://winrarisyou.github.io/SMC-TouchControls/chrome.js) and follow instructions in video. The name is important, it will be how you access it. Make sure the one you are clicking starts with javascript:
-This method should work iOS but I don't own any apple devices so I can't test it.
+This method should work iOS but I don't own any apple devices so I can't test it. Someone has said this didn't work for them so your mileage may vary.
 
 <video controls width="25%" src="images/chrome.mp4" title="Title"></video>
