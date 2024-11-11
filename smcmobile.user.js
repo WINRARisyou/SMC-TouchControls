@@ -6,12 +6,18 @@
 // @homepage     https://github.com/WINRARisyou/SMC-TouchControls
 // @downloadURL  https://winrarisyou.github.io/SMC-TouchControls/smcmobile.user.js
 // @match        https://levelsharesquare.com/html5/supermarioconstruct/*
-// @version      1.0.32
+// @version      1.0.33
 // @updateURL    https://winrarisyou.github.io/SMC-TouchControls/smcmobile.user.js
 // @run-at       document-start
 // @grant        none
 // ==/UserScript==
-
+window.TouchControlsLoaded = false;
+if (window.TouchControlsAlreadyLoaded != undefined && window.TouchControlsLoaded == false) {
+    console.warn("Touch Controls have already been created! Don't make 'em twice!")
+} else {
+	window.TouchControlsAlreadyLoaded = true
+	window.TouchControlsLoaded = true;
+}
 window.debugMode = false;
 
 function isMobile() {
@@ -21,9 +27,6 @@ function isMobile() {
 		} catch (e) {
 			return false;
 		}
-}
-if(isMobile()) {
-	document.querySelector("body").requestFullscreen();
 }
 
 function initTouchControls() {
@@ -355,4 +358,15 @@ window.deleteControls = function deleteControls() {
 	}
 }
 
-initTouchControls();
+
+
+if (isMobile() && window.TouchControlsLoaded == true) {
+	document.querySelector("body").requestFullscreen();
+} else if (window.TouchControlsAlreadyLoaded) {
+	pcDetected = prompt('You are not on a mobile device. Do you want to delete touch Controls?', 'Yes/No')
+	if (pcDetected.toLowerCase().includes('y')) {
+		// Do Nothing as controls haven't been initialized
+	} else if (pcDetected.toLowerCase().includes('n')) {
+		initTouchControls();
+	}
+}
