@@ -13,29 +13,30 @@
 // ==/UserScript==
 window.debugMode = false;
 window.reset = false;
-// If this ever ends up on LSS, you could host the images on there I guess. It should'nt have the "/" on the end.
+
+// If this ever ends up on LSS, you could host the images on there I guess. It shouldn't have the "/" on the end.
 window.assetsURL = "https://winrarisyou.github.io/SMC-TouchControls"
+
 function isMobile() {
-	try {
-		document.createEvent("TouchEvent");
-		return true;
-	} catch (e) {
-		return false;
-	}
+	return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 }
 
 function initTouchControls(mobile) {
-	if (window.TouchControlsLoaded && !window.reset) {
+	if (window.TouchControlsLoaded && window.reset == false) {
 		console.warn("Touch Controls have already been created! Don't make 'em twice!");
 		return;
 	}
-	if (!mobile) {
-		var onPC = prompt("You are not on a mobile device. Do you want to delete touch Controls?", "Yes/No")
+	if (mobile) {
+		// do nothing.
+	} else {
+		var onPC = prompt("You are not on a mobile/touch device. Do you want to delete touch Controls?", "Yes/No")
+		if (!onPC) {initTouchControls(); return;}
 		if (onPC.toLowerCase().includes("y")) {
 			return;
 		} else if (onPC.toLowerCase().includes("n")) {
 			// continue execution
 		}
+
 	}
 	window.reset = false;
 	window.TouchControlsLoaded = true;
@@ -342,41 +343,41 @@ function initTouchControls(mobile) {
 }
 
 window.resetWithDebug = function resetWithDebug() {
-	var gamepad = document.getElementById("touch-gamepad")
+	var gamepad = document.getElementById("touch-gamepad");
 	if (gamepad != undefined) {
-		gamepad.remove()
+		gamepad.remove();
 	}
-	var debug = document.getElementById("debug-info")
+	var debug = document.getElementById("debug-info");
 	if (debug != undefined) {
-		debug.remove()
+		debug.remove();
 	}
-	window.debugMode = true
-	window.reset = true
-	initTouchControls()
+	window.debugMode = true;
+	window.reset = true;
+	initTouchControls();
 }
 
 window.resetControls = function resetControls() {
-	var gamepad = document.getElementById("touch-gamepad")
+	var gamepad = document.getElementById("touch-gamepad");
 	if (gamepad != undefined) {
-		gamepad.remove()
+		gamepad.remove();
 	}
-	var debug = document.getElementById("debug-info")
+	var debug = document.getElementById("debug-info");
 	if (debug != undefined) {
-		debug.remove()
+		debug.remove();
 	}
-	window.debugMode = false
-	window.reset = true
-	initTouchControls()
+	window.debugMode = false;
+	window.reset = true;
+	initTouchControls();
 }
 
 window.deleteControls = function deleteControls() {
-	var gamepad = document.getElementById("touch-gamepad")
+	var gamepad = document.getElementById("touch-gamepad");
 	if (gamepad != undefined) {
-		gamepad.remove()
+		gamepad.remove();
 	}
-	var debug = document.getElementById("debug-info")
+	var debug = document.getElementById("debug-info");
 	if (debug != undefined) {
-		debug.remove()
+		debug.remove();
 	}
 }
 
@@ -384,5 +385,5 @@ if (isMobile()) {
 	document.querySelector("body").requestFullscreen();
 	initTouchControls(true);
 } else {
-	initTouchControls(false)
+	initTouchControls(false);
 }
