@@ -1,1 +1,1 @@
-javascript:(function () { var script = document.createElement('script'); script.src="https://winrarisyou.github.io/SMC-TouchControls/smcmobile.user.js"; document.body.append(script); script.onload = function () { resetControls(); } })();
+javascript:(function () { var script = document.createElement('script'); script.src="https://winrarisyou.github.io/SMC-TouchControls/smcmobile.user.js"; document.body.append(script);})();
