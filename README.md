@@ -1,6 +1,5 @@
 # SMC-TouchControls
 Adds touch support for Super Mario Construct! Compatibility with iOS is ***NOT*** guaranteed. Read the disclaimer.
-<style>h1,h2,h3,h4 { border-bottom: 0; margin: 0;} </style>
 
 - [Download](#download)
 - [Disclaimer](#disclaimer-its-going-to-lag)
