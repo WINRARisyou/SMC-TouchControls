@@ -24,10 +24,18 @@ function isMobile() {
 	}
 }
 
-function initTouchControls() {
+function initTouchControls(mobile) {
 	if (window.TouchControlsLoaded && !window.reset) {
 		console.warn("Touch Controls have already been created! Don't make 'em twice!");
 		return;
+	}
+	if (!mobile) {
+		var onPC = prompt("You are not on a mobile device. Do you want to delete touch Controls?", "Yes/No")
+		if (onPC.toLowerCase().includes("y")) {
+			return;
+		} else if (onPC.toLowerCase().includes("n")) {
+			// continue execution
+		}
 	}
 	window.reset = false;
 	window.TouchControlsLoaded = true;
@@ -38,7 +46,7 @@ function initTouchControls() {
 			buttons: [
 				{ id: "pause", border: true, label: "Pause", color1: "rgba(255, 255, 255, 0.5)", color2: "rgba(255, 255, 0, 0.5)", x: "calc(50% - 65px)", y: "0px", width: "60px", height: "30px", key: "p", keyCode: 80 },
 				{ id: "fullscreen", border: true, label: "Fullscreen", color1: "rgba(255, 255, 255, 0.5)", color2: "rgba(255, 255, 0, 0.5)", x: "calc(50% + 5px)", y: "0px", width: "80px", height: "30px", key: "", keyCode: 0 },
-                { id: "item", border: true, label: "Item", color1: "rgba(255, 255, 255, 0.5)", color2: "rgba(255, 255, 0, 0.5)", x: "calc(50% - 30px)", y: "35px", width: "60px", height: "60px", key: "Shift", keyCode: 16 },
+				{ id: "item", border: true, label: "Item", color1: "rgba(255, 255, 255, 0.5)", color2: "rgba(255, 255, 0, 0.5)", x: "calc(50% - 30px)", y: "35px", width: "60px", height: "60px", key: "Shift", keyCode: 16 },
 			]
 		},
 		dpad: {
@@ -57,7 +65,7 @@ function initTouchControls() {
 			buttons: [
 				{ id: "jump", label: "Jump", border: false, color1: "rgba(255, 255, 255, 0)", color2: "rgba(255, 255, 0, 0)", active: "images/game/B-active.png", inactive: "images/game/B-inactive.png", x: 0, y: 70, width: 60, height: 60, key: "z", keyCode: 90 },
 				{ id: "run", label: "Run", border: false, color1: "rgba(255, 255, 255, 0)", color2: "rgba(255, 255, 0, 0)", active: "images/game/Y-active.png", inactive: "images/game/Y-inactive.png", x: 70, y: 70, width: 60, height: 60, key: "x", keyCode: 88 },
-				{ id: "spinjump", label: "Spin", border: false, color1: "rgba(255, 255, 255, 0)", color2: "rgba(255, 255, 0, 0)", active: "images/game/A-active.png", inactive: "images/game/A-inactive.png", x: 140, y: 70, width: 60, height: 60,  key: "c", keyCode: 67 },
+				{ id: "spinjump", label: "Spin", border: false, color1: "rgba(255, 255, 255, 0)", color2: "rgba(255, 255, 0, 0)", active: "images/game/A-active.png", inactive: "images/game/A-inactive.png", x: 140, y: 70, width: 60, height: 60, key: "c", keyCode: 67 },
 				{ id: "usepowerup", label: "Use Powerup", border: false, color1: "rgba(255, 255, 255, 0)", color2: "rgba(255, 255, 0, 0)", active: "images/game/X-active.png", inactive: "images/game/X-inactive.png", x: 105, y: 0, width: 60, height: 60, key: " ", keyCode: 32 },
 				{ id: "togglerun", label: "Toggle Run", border: true, color1: "rgba(255, 255, 255, 0.5)", color2: "rgba(255, 255, 0, 0.5)", x: 35, y: 0, width: 60, height: 60, key: "x", keyCode: 88, isToggle: true }
 			]
@@ -362,7 +370,7 @@ window.resetControls = function resetControls() {
 }
 
 window.deleteControls = function deleteControls() {
-    var gamepad = document.getElementById("touch-gamepad")
+	var gamepad = document.getElementById("touch-gamepad")
 	if (gamepad != undefined) {
 		gamepad.remove()
 	}
@@ -372,16 +380,9 @@ window.deleteControls = function deleteControls() {
 	}
 }
 
-
-
-if (isMobile() && window.TouchControlsLoaded == true) {
+if (isMobile()) {
 	document.querySelector("body").requestFullscreen();
-	initTouchControls();
+	initTouchControls(true);
 } else {
-	var onPC = prompt("You are not on a mobile device. Do you want to delete touch Controls?", "Yes/No")
-	if (onPC.toLowerCase().includes("y")) {
-		// Do Nothing as controls haven"t been initialized
-	} else if (onPC.toLowerCase().includes("n")) {
-		initTouchControls();
-	}
+	initTouchControls(false)
 }
