@@ -47,7 +47,7 @@ function initTouchControls(mobile) {
 			buttons: [
 				{ id: "pause", border: true, label: "Pause", color1: "rgba(255, 255, 255, 0.5)", color2: "rgba(255, 255, 0, 0.5)", x: "calc(50% - 65px)", y: "0px", width: "60px", height: "30px", key: "p", keyCode: 80 },
 				{ id: "fullscreen", border: true, label: "Fullscreen", color1: "rgba(255, 255, 255, 0.5)", color2: "rgba(255, 255, 0, 0.5)", x: "calc(50% + 5px)", y: "0px", width: "80px", height: "30px", key: "", keyCode: 0 },
-				{ id: "item", border: true, label: "Item", color1: "rgba(255, 255, 255, 0.5)", color2: "rgba(255, 255, 0, 0.5)", x: "calc(50% - 30px)", y: "35px", width: "60px", height: "60px", key: "Shift", keyCode: 16 },
+				{ id: "item", border: true, label: "Item", color1: "rgba(255, 255, 255, 0.5)", color2: "rgba(255, 255, 0, 0.5)", x: "calc(50% - 30px)", y: "35px", width: "60px", height: "60px", key: "Shift", keyCode: 16 }
 			]
 		},
 		dpad: {
@@ -57,7 +57,8 @@ function initTouchControls(mobile) {
 				{ id: "up", label: "↑", border: false, color1: "rgba(255, 255, 255, 0)", color2: "rgba(255, 255, 0, 0)", active: "images/game/up-active.png", inactive: "images/game/up-inactive.png", x: 50, y: 0, width: 50, height: 50, key: "ArrowUp", keyCode: 38 },
 				{ id: "left", label: "←", border: false, color1: "rgba(255, 255, 255, 0)", color2: "rgba(255, 255, 0, 0)", active: "images/game/left-active.png", inactive: "images/game/left-inactive.png", x: 0, y: 50, width: 50, height: 50, key: "ArrowLeft", keyCode: 37 },
 				{ id: "right", label: "→", border: false, color1: "rgba(255, 255, 255, 0)", color2: "rgba(255, 255, 0, 0)", active: "images/game/right-active.png", inactive: "images/game/right-inactive.png", x: 100, y: 50, width: 50, height: 50, key: "ArrowRight", keyCode: 39 },
-				{ id: "down", label: "↓", border: false, color1: "rgba(255, 255, 255, 0)", color2: "rgba(255, 255, 0, 0)", active: "images/game/down-active.png", inactive: "images/game/down-inactive.png", x: 50, y: 100, width: 50, height: 50, key: "ArrowDown", keyCode: 40 }
+				{ id: "down", label: "↓", border: false, color1: "rgba(255, 255, 255, 0)", color2: "rgba(255, 255, 0, 0)", active: "images/game/down-active.png", inactive: "images/game/down-inactive.png", x: 50, y: 100, width: 50, height: 50, key: "ArrowDown", keyCode: 40 },
+				{ id: "center", label: "", border: false, color1: "rgba(255, 255, 255, 0)", color2: "rgba(255, 255, 0, 0)", active: "images/game/center.png", inactive: "images/game/center.png", x: 50, y: 50, width: 50, height: 50, key: "", keyCode: 0 }
 			]
 		},
 		actionButtons: {
