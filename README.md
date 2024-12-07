@@ -9,7 +9,7 @@ Adds touch support for Super Mario Construct! Compatibility with iOS is ***NOT**
 	- [Firefox on Android](#mobile-android-firefox)
 		- [Automatic](#automatic)
 		- [Manual](#manual)
-  	- [Mobile (Chrome)](#mobile-chrome)
+  	- [Mobile (Chrome, no installation required)](#mobile-chrome)
 
 ---
 # Download
