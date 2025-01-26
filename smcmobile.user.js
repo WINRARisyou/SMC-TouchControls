@@ -6,7 +6,7 @@
 // @homepage     https://github.com/WINRARisyou/SMC-TouchControls
 // @downloadURL  https://winrarisyou.github.io/SMC-TouchControls/smcmobile.user.js
 // @match        https://levelsharesquare.com/html5/supermarioconstruct/*
-// @version      1.0.4
+// @version      1.0.5
 // @updateURL    https://winrarisyou.github.io/SMC-TouchControls/smcmobile.user.js
 // @run-at       document-start
 // @grant        none
@@ -116,6 +116,8 @@ function initTouchControls(mobile) {
 		gamepad.style.pointerEvents = "none";
 		gamepad.style.width = "100%";
 		gamepad.style.height = "100%";
+		gamepad.style.top = "0px";
+		gamepad.style.left = "0px;"
 		document.body.appendChild(gamepad);
 
 		const special = document.createElement("div")
