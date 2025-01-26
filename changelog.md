@@ -1,3 +1,5 @@
+### 1.0.5 1/26/25
+Fixed some positioning issues preventing controls from being used
 ### 1.0.4 12/06/24
 Add images for each button
 ### 1.0.33 11/10/24
