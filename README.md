@@ -1,6 +1,6 @@
 # SMC-TouchControls
 Adds touch support for Super Mario Construct! Compatibility with iOS is ***NOT*** guaranteed. Read the disclaimer.
-
+## As of January 26, 2025, the script is integrated into Level Share Square itself! [Click Here](https://levelsharesquare.com/games/supermariocsonstruct) and press the mobile controls button to play!
 - [Download](#download)
 - [Disclaimer](#disclaimer-its-going-to-lag)
 - [Installation](#installation)
@@ -17,7 +17,7 @@ Download [smcmobile.user.js](https://winrarisyou.github.io/SMC-TouchControls/smc
 
 ---
 
-# Disclaimer: It's going to lag
+# Disclaimer: The game going to lag
 You're playing a PC optimized game on your mobile browser. Unless your phone is a NASA supercomputer in disguise, it's probably not going to run very well. It's not their fault, so don't berate them in the discord saying it runs poorly on your phone. If it runs really bad on Firefox, use the Chrome method. It's more tedious, but it runs faster. **This tool was built for and tested on an Android device, so *compatibility with iOS is not guaranteed***.
 <br>
 
