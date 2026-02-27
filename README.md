@@ -1,6 +1,17 @@
+# This project is dead yo
+I neglected to update this repository when the touch controls were added to LSS. Probably shouldn't have done that, but you can't change the past. I added all of the versions that were used on LSS that didn't get put here, though they were copied straight from LSS and didn't undergo any modifications.
+
+1.0.6-1.2.0 won't work as a userscript out of the box. 1.2.1 has userscript metadata, but it may not work on LSS due to various reasons, the main one being CORS.
+
+Now that SMC has built in touch controls as of Snapshot 34, you should use that instead. Just go to [the game's page on LSS](https://levelsharesquare.com/games/supermarioconstruct) and start the game. Once you enter a level, the touch controls will appear. Alternatively, download the APK from [LSS's itch.io page](https://levelsharesquare.itch.io/super-mario-construct) for an offline experience.
+
+Original ReadMe
+
+---
 # SMC-TouchControls
-Adds touch support for Super Mario Construct! Compatibility with iOS is ***NOT*** guaranteed. Read the disclaimer.
-## As of January 26, 2025, the script is integrated into Level Share Square itself! [Click Here](https://levelsharesquare.com/games/supermariocsonstruct) and press the mobile controls button to play!
+Adds touch support for Super Mario Construct! Compatibility with iOS is ***NOT*** guaranteed. Controller sprites made by Smuglutena. Read the disclaimer.
+
+### As of January 26, 2025, the script is integrated into Level Share Square itself! [Click Here](https://levelsharesquare.com/games/supermariocsonstruct) and press the mobile controls button to play!
 - [Download](#download)
 - [Disclaimer](#disclaimer-its-going-to-lag)
 - [Installation](#installation)
